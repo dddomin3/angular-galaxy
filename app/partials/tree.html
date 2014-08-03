@@ -1,0 +1,22 @@
+<div class="container-fluid">
+
+	<div class="row-fluid">
+		<!--Sidebar content-->
+		Search: <input ng-model="query">
+			<!--Body content-->
+	</div>
+	<div class="row-fluid">
+			<p ng-repeat="entity in filtered = (entities._embedded.mobileAsset | filter:query)">
+			  </p>
+			  {{filtered.length}}
+			  
+				<div treecontrol class="tree-classic"
+				   tree-model="filtered"
+				   options="treeOptions"
+				   on-selection="showSelected(node)"
+				   selected-node="node1">
+				</div>
+				
+				<div header></div>
+	</div>	
+</div>

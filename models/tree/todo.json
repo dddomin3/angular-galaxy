@@ -1,0 +1,46 @@
+{
+                   "featureDTO":
+                   [
+                       {
+                           "delete": false,
+                           "description": "This is a test feature",
+                           "featureId": 1,
+                           "name": "Test Feature1",
+                           "subFeatureList":
+                           [
+                               {
+                                   "delete": false,
+                                   "description": "This is a sub feature 1",
+                                   "name": "Sub Feature 1",
+                                   "subFeatureId": 1
+                               },
+                               {
+                                   "delete": false,
+                                   "description": "This is sub feature 2",
+                                   "name": "Sub Feature 2",
+                                   "subFeatureId": 2
+                               }
+                           ]
+                       },
+                        {   "delete": false,
+                           "description": "This is a test feature",
+                           "featureId": 2,
+                           "name": "Test Feature2",
+                           "subFeatureList":
+                           [
+                               {
+                                   "delete": false,
+                                   "description": "This is a sub feature 1",
+                                   "name": "Sub Feature 1",
+                                   "subFeatureId": 1
+                               },
+                               {
+                                   "delete": false,
+                                   "description": "This is sub feature 2",
+                                   "name": "Sub Feature 2",
+                                   "subFeatureId": 2
+                               }
+                           ]
+                       }
+                   ]
+                 }

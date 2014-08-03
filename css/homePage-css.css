@@ -1,0 +1,109 @@
+#do{
+  position:absolute;
+  top:48%;
+  left:6%;
+  border-bottom: 1px dashed purple;
+  width: 89%;
+  color: purple;
+  font-size:20px;
+}
+#dr
+{ position:absolute;
+  right:5%;
+  top:3%;
+}
+#dl
+{ position:absolute;
+  left:5%;
+  top:2%;
+}
+#fr
+{ position:absolute;
+  right:2%;
+}
+#fl
+{ position:absolute;
+  left:2%;
+}
+#dl1
+{ position:absolute;
+  left:5%;
+  top:9.5%;
+  }
+  #bg1 {position:absolute;
+  left:5%;
+  top:11.8%;
+    background: rgba(228, 228, 228, 0.85);
+	height:6%;
+	width:74%;
+	color: purple;
+	font-size:20px;
+}
+#tt1 {position:relative;
+  left:1%;
+  top:25%;
+	vertical-align:center;
+	}
+	#tt2 {position:relative;
+  left:6%;
+  top:25%;
+	vertical-align:center;
+	}
+	#ff1 {position:relative;
+  left:3%;
+  top:35%;
+	color:grey;
+	}
+	#ff2 {position:relative;
+  right:3%;
+  top:35%;
+  color:grey;
+	}
+#bg2 {position:absolute;
+  right:5%;
+  top:11.8%;
+    background: rgba(228, 228, 228, 0.85);
+	vertical-align:middle;
+	height:6%;
+	line-height:100%;
+	width:15%;
+	color: purple;
+	font-size:20px;
+}
+#bg3 {position:absolute;
+  right:5%;
+  top:18%;
+    background: rgba(0, 204, 255, 0.55);
+	width:15%;
+	height:25%;
+}
+#fbg {position:absolute;
+  right:5%;
+  bottom:5%;
+    background: rgba(228, 228, 228, 0.85);
+	width:88%;
+	height:4%;
+}
+
+a:link {
+    text-decoration:none;
+    color: grey;
+}
+
+a:visited {
+    text-decoration:none;
+	color: grey;
+}
+
+a:hover {
+    text-decoration:none;
+    color: grey;
+}
+
+a:active {
+    text-decoration:none;
+    color: grey;
+}
+#ctr { position:relative;
+       margin-bottom:2%;
+}

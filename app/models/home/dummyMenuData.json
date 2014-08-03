@@ -1,0 +1,100 @@
+[
+ {
+        "id": 1,
+        "label": "User Management",
+        "desc": "User Management Menu",
+        "subitems": [
+              {
+            	  "id": 1.1,
+                  "label": "Manage Users",
+                  "desc" : "Manage Users desc"
+              },
+              {
+            	  "id": 1.2,
+                  "label": "Manage Account",
+                  "desc" : "Manage Account desc"
+              },
+              {
+            	  "id": 1.3,
+                  "label": "Manage Role",
+                  "desc" : "Manage Role desc"
+              },
+              {
+            	  "id": 1.4,
+                  "label": "Prospect Notifications",
+                  "desc" : "Prospect Notifications desc"
+              }
+         ]      
+    },
+     {
+        "id": 2,
+        "label": "Applications",
+        "desc" : "Applications Menu",
+        "subitems" :[
+              {
+            	  "id": 2.1,
+                  "label": "Applications 1",
+                  "desc" : "Applications 1 desc"
+              },
+              {
+            	  "id": 2.2,
+            	  "label": "Applications 2",
+                  "desc" : "Applications 2 desc"
+              },
+              {
+            	  "id": 2.3,
+            	  "label": "Applications 3",
+                  "desc" : "Applications 3 desc"
+              },
+              {
+            	  "id": 2.4,
+            	  "label": "Applications 4",
+                  "desc" : "Applications 4 desc"
+              }
+         ]      
+    },
+     {
+        "id": 3,
+        "label": "Configuration",
+        "desc" : "Configuration Menu",
+        "subitems" :[
+              {
+            	  "id": 3.1,
+                  "label": "Manage Hierarchy",
+                  "desc" : "Manage Hierarchy desc"
+              },
+              {
+            	  "id": 3.2,
+                  "label": "Manage Entities",
+                  "desc" : "Manage Entities desc"
+              }
+        ]      
+    },
+     {
+        "id": 4,
+        "label": "Dashboard & Reporting",
+        "desc" : "Dashboard & Reporting Menu",
+        "subitems" :[
+              {
+            	  "id": 4.1,
+                  "label": "Dashboard & Reporting 1",
+                  "desc" : "Dashboard & Reporting 1desc"
+              },
+              {
+            	  "id": 4.2,
+            	   "label": "Dashboard & Reporting 2",
+                   "desc" : "Dashboard & Reporting 1desc"
+              },
+              {
+            	  "id": 4.3,
+            	   "label": "Dashboard & Reporting 3",
+                   "desc" : "Dashboard & Reporting 1desc"
+              },
+              {
+            	  "id": 4.4,
+            	   "label": "Dashboard & Reporting 4",
+                   "desc" : "Dashboard & Reporting 1desc"
+              }
+           ]      
+    }
+]
