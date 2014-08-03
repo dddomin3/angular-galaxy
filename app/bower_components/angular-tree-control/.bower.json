@@ -1,0 +1,30 @@
+{
+  "name": "angular-tree-control",
+  "main": "./angular-tree-control.js",
+  "ignore": [
+    "Gruntfile.js",
+    "package.json",
+    "test",
+    "karma.conf.js"
+  ],
+  "dependencies": {
+    "angular": "~1.2.6"
+  },
+  "devDependencies": {
+    "angular-mocks": "~1.2.7",
+    "jquery": "~2.0.3",
+    "bootstrap": "~3.1.1",
+    "angular-bootstrap": "~0.11.0",
+    "google-code-prettify": "1.0.1"
+  },
+  "homepage": "https://github.com/wix/angular-tree-control",
+  "_release": "fd6a3994b2",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "fd6a3994b2de1bd8b1b72d85b807e6b311f0986a"
+  },
+  "_source": "git://github.com/wix/angular-tree-control.git",
+  "_target": "master",
+  "_originalSource": "angular-tree-control"
+}
