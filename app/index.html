@@ -1,0 +1,115 @@
+<html ng-app="gxMainApp" class="ng-scope">
+	<head>
+	    <title>Galaxy 2021 - Platform of Platforms</title>
+		
+		 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+		    <link href="../../themes/default/css/gx-main.css" rel="stylesheet" type="text/css" /> 
+            <link rel="stylesheet" href="/app/bower_components/bootstrap/dist/css/bootstrap.min.css" />
+		    <link href="src/skin/ui.dtree.css" rel="stylesheet" type="text/css" id="skinSheet">
+			<link href="/app/css/dashboard.css" rel="stylesheet">
+	</head>
+	<body>
+			<!--  for services here -->
+	    	<!--  this is for switching the views and laying out the contents here -->
+	
+	<div header ng-show="showHeader"></div>
+	<div class="container-fluid">
+      <div class="row">
+		<div class="col-sm-3 col-md-2 sidebar" ng-show="showSidebar" ng-controller="sidebar">
+        <div class="row">
+		  Search: <input ng-model="query">
+		</div>
+		<div class="row"> 
+			  <p ng-repeat="entity in filtered = (entities._embedded.entity | filter:query) | orderBy:orderProp">
+			  </p>
+			
+			<div
+			  data-angular-treeview="true"
+			  data-tree-id="abc"
+			  data-tree-model="filtered"
+			  data-node-id="eid"
+			  data-node-label="eid"
+			  data-node-children="lat" >
+			</div>
+		</div>
+        </div>
+		
+		<div ng-controller="viewController">
+			<div ng-attr-class= "{{viewClass}}">
+				<div>
+					 <ui-view></ui-view>	
+				</div>
+			</div>
+		</div>
+		<div class="row" ng-show="showFooter">
+			<div footer ng-show="showFooter"></div>
+		</div>
+	  </div>
+	</div>
+
+			<link data-require="ng-table@*" data-semver="0.3.0" rel="stylesheet" href="../../themes/default/css/adminNotification/ngTable.css" />
+	
+	
+			<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.js"></script>	
+			<script data-require="ng-table@*" data-semver="0.3.0" src="libs/ng-table.js"></script>
+			<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular-route.js"></script>	
+			<script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.10/angular-ui-router.js"></script>		
+			<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular-sanitize.js"></script>	
+			<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular-animate.min.js"></script>	
+			<script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.10.0.js"></script>
+
+             <script src="libs/ng-csv.min.js"></script>
+
+
+		    <script type="text/javascript" src="config/app.js"></script>
+			
+			<!-- jQuery -->
+		    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" type="text/javascript"></script>
+		    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js" type="text/javascript"></script>
+		    <script src="libs/jquery/jquery-ui.js"></script>
+            <script src="libs/jquery/jquery-1.8.2.js"></script>
+			
+			<script src="libs/jquery/jquery.js" type="text/javascript"></script>
+			<script src="libs/jquery/jquery-ui.custom.js" type="text/javascript"></script>
+			<script src="libs/jquery/jquery.cookie.js" type="text/javascript"></script>
+		   <!--  needed for the ngDialog case! -->
+	    	<script src="libs/ngDialog.js"></script>	    
+	    	<script src="libs/jquery/jquery.csv-0.71.min.js"></script>
+	    	<script src="libs/ng-tree.js"></script>
+	    	
+	    	
+			<!--  Register the controllers and directives here.. -->
+			<script type="text/javascript"  src="../services/mainService/gxServiceWrapper.js"></script>		
+			<script type="text/javascript"  src="../controllers/loginFlow/loginFlowController.js"></script>
+			<script type="text/javascript"  src="../controllers/adminNotification/notificationController.js"></script>
+			<script type="text/javascript"  src="../controllers/loginflow/registrationFlowController.js"></script>
+			<script type="text/javascript"  src="../directives/roleManagement/roleMgntDirective.js"></script>
+			<script type="text/javascript"  src="../directives/loginFlow/loginDirective.js"></script>			
+			<script type="text/javascript"  src="../services/home/homeProfileDataService.js"></script>		
+			<script type="text/javascript"  src="../services/loginFlow/gxregistrationService.js"></script>	
+			<script type="text/javascript"  src="../services/adminNotification/adminNotificationDataService.js"></script>		
+	    	<script type="text/javascript"  src="../controllers/home/homeController.js"></script>
+	    	<script type="text/javascript"  src="../controllers/manageUsers/TreeControllers.js"></script>
+	    	<script type="text/javascript"  src="../controllers/manageUsers/manageUsersController.js"></script>
+			<script type="text/javascript"  src="../controllers/manageVehicles/manageVehiclesController.js"></script>
+			<script type="text/javascript"  src="../controllers/manageVehicles/dynamicLayersController.js"></script>
+			<script src="/app/bower_components/angular.treeview/angular.treeview.min.js"></script>
+			
+	    	<script type="text/javascript"  src="../controllers/roleManagement/roleManagementController.js"></script>
+			<script type="text/javascript" src="/app/bower_components/angular-tree-control/angular-tree-control.js"></script>
+
+			<script src="http://cdn.leafletjs.com/leaflet-0.7.1/leaflet.js"></script>
+			<script src="/app/js/angular-leaflet-directive.min.js"></script>
+			
+			<link rel="stylesheet" type="text/css" href="/app/bower_components/angular-tree-control/css/tree-control.css">
+			<link rel="stylesheet" type="text/css" href="/app/bower_components/angular-tree-control/css/tree-control-attribute.css">
+			<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.1/leaflet.css">
+			<link rel="stylesheet" href="/app/bower_components/leaflet/dist/leaflet.css">
+			<link rel="stylesheet" href="/app/bower_components/angular.treeview/css/angular.treeview.css">
+			
+			<script type="text/javascript"  src="../directives/header_footer.js"></script>
+			<script type="text/javascript"  src="../directives/view.js"></script>
+			<script type="text/javascript"  src="../controllers/tree.js"></script>
+	</body>
+</html>
