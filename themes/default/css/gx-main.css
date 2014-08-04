@@ -1,0 +1,177 @@
+
+html, body {
+  height: 100%;
+}
+.page-wrap {
+  min-height: 100%;
+  /* equal to footer height */
+  margin-bottom: -4.5%; 
+}
+.page-wrap:after {
+  content: "";
+  display: block;
+}
+.site-footer, .page-wrap:after {
+  /* .push must be the same height as footer */
+   width:90.5%;
+	height:4.5%;
+}
+.site-footer {position:relative;
+	left:5%;
+   background: rgba(228, 228, 228, 0.85);
+	/*width:90.5%;
+	height:4.5%;*/
+}
+
+#do{
+  position:absolute;
+  top:48%;
+  left:6%;
+  border-bottom: 1px dashed purple;
+  width: 89%;
+  color: purple;
+  font-size:20px;
+}
+#gxtright
+{ position:absolute;
+  right:5%;
+  top:2%;
+}
+#gxtleft
+{ position:absolute;
+  left:5%;
+  top:1%;
+}
+
+#gxtloc
+{ position:absolute;
+  left:5%;
+  top:7%;
+  }
+  #gxbgtop {position:absolute;
+  left:5%;
+  top:10%;
+    background: rgba(228, 228, 228, 0.85);
+	vertical-align:center;
+	height:6%;
+	width:90.5%;
+	color: purple;
+	font-size:20px;
+}
+
+ #gxfilebx {position:absolute;
+  left:5%;
+  top:18%;
+	width:90.5%;
+	border:1px solid black;
+}
+ #gxtrm {position:relative;
+  left:2%;
+  top:1%;
+}
+ #gxfrm1 {position:absolute;
+  left:10%;
+  top:18%;
+	width:90.5%;
+}
+ #gxfrm2 {position:absolute;
+  left:50%;
+  top:18%;
+	width:90.5%;
+}
+#gxtreepos {position:absolute;
+  left:10%;
+  top:50%;
+}
+#gxrbutton {position:absolute;
+  left:10%;
+  top:65%;
+}
+ #gxfbtn {position:absolute;
+  left:75%;
+  top:35%;
+	width:90.5%;
+}
+#gxttm1 {position:absolute;
+  left:1%;
+  top:25%;
+	vertical-align:center;
+	}
+	#gxttm2 {position:absolute;
+  left:80%;
+  top:25%;
+	vertical-align:center;
+	}
+	#gxttm3 {position:absolute;
+  left:87%;
+  top:25%;
+	vertical-align:center;
+	}
+	#gxttm4 {position:absolute;
+  left:15%;
+  top:25%;
+	vertical-align:center;
+	}
+	 #gxtable{position:relative;
+  left:5%;
+  top:30%;
+    height:6%;
+	width:90%;
+}
+	#gxff1 {position:relative;
+  left:3%;
+  top:35%;
+	color:grey;
+	}
+	#gxff2 {position:absolute;
+  right:3%;
+  top:35%;
+	}
+#gxbg2 {position:absolute;
+  right:5%;
+  top:8.8%;
+    background: rgba(228, 228, 228, 0.85);
+	vertical-align:middle;
+	height:6%;
+	line-height:100%;
+	width:15%;
+	color: purple;
+	font-size:20px;
+}
+#gxbg3 {position:absolute;
+  right:5%;
+  top:17%;
+    background: rgba(0, 204, 255, 0.55);
+	width:15%;
+	height:25%;
+}
+#gxftr {position:absolute;
+  left:5%;
+  bottom:4.5%;
+    background: rgba(228, 228, 228, 0.85);
+	width:90.5%;
+	height:4.5%;
+}
+
+a:link {
+	text-decoration:none;
+    color: grey;
+}
+
+a:visited {
+    text-decoration:none;
+	color: grey;
+}
+
+a:hover {
+    text-decoration:none;
+    color: purple;
+}
+
+a:active {
+    text-decoration:none;
+    color: grey;
+}
+#gxctr { position:relative;
+       margin-bottom:2%;
+}
