@@ -20,7 +20,9 @@
  * Function   :    This file is main config file (like a config constructor) do not change the main 
  * 				   settings except for variable names. 
  */
-
+ 
+angular.module('angularDc', []);
+ 
 var gxMainApp = angular.module("gxMainApp", [
 	'ui.router',
 	'ngRoute',
@@ -30,7 +32,8 @@ var gxMainApp = angular.module("gxMainApp", [
 	'ui.bootstrap',
 	'ngAnimate', 
 	'leaflet-directive',
-	'angularTreeview'
+	'angularTreeview',
+	'angularDc'
 	]);
 
 //for routing the application

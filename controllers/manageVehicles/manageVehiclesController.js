@@ -1,7 +1,7 @@
 
 gxMainApp.controller('vehicleController', function($scope, $filter, $rootScope, ngTableParams, $http) {
 
-	$http.get('http://localhost:8080/entity?size=1000').success(function(data) {		
+	$http.get('http://10.234.31.214:8080/entity?size=1000').success(function(data) {		
 		$scope.rows = data._embedded.entity;
 		
 		$scope.tableParams = new ngTableParams({
