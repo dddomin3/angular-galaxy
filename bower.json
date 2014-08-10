@@ -16,7 +16,7 @@
 	"angular-leaflet-directive": "master",
 	"angular-tree-control":"master",
 	"angular-dc":"master",
-	"d3":"master",
+	"d3":"3.4.11",
 	"colorbrewer":"master"
   }
 }

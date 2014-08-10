@@ -11,8 +11,7 @@ angular.module('angularDc', []).directive('dcChart', [
         'onPreRedraw',
         'onPreRender',
         'onZoomed',
-        'postSetupChart',
-		'angularDc'
+        'postSetupChart'
       ];
     /* Called during the directive's linking phase, this function creates
        a Dc.js chart. The chart is configured based on settings read from
