@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<!--
+/**
+* Copyright 2014 Pacific Controls Software Services LLC (PCSS). All Rights Reserved.
+*
+* This software is the property of Pacific Controls  Software  Services LLC  and  its
+* suppliers. The intellectual and technical concepts contained herein are proprietary 
+* to PCSS. Dissemination of this information or  reproduction  of  this  material  is
+* strictly forbidden  unless  prior  written  permission  is  obtained  from  Pacific 
+* Controls Software Services.
+* 
+* PCSS MAKES NO REPRESENTATION OR WARRANTIES ABOUT THE SUITABILITY  OF  THE  SOFTWARE,
+* EITHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE  IMPLIED  WARRANTIES  OF
+* MERCHANTANILITY, FITNESS FOR A PARTICULAR PURPOSE,  OR  NON-INFRINGMENT.  PCSS SHALL
+* NOT BE LIABLE FOR ANY DAMAGES SUFFERED BY LICENSEE AS A RESULT OF  USING,  MODIFYING
+* OR DISTRIBUTING THIS SOFTWARE OR ITS DERIVATIVES.
+*/
+
+/**
+ * Version    :    1.0 
+ * User       :    pcseg306
+ * Function   :    New User Registration Page
+ */
+
+-->
+<html>
+	<head>
+    	<meta charset="UTF-8">
+     	<title>Registration Form</title>
+      	<!-- Start: Load fonts from Google -->
+	  	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,600italic,400italic,700italic:latin' rel='stylesheet' type='text/css'>
+	  	<!-- End: Load fonts from Google -->	
+      	<link href="themes/default/CSS/gx-login.css" rel="stylesheet" type="text/css">
+      	<script src="http://code.angularjs.org/1.2.5/angular.js" data-semver="1.2.5" data-require="angular.js@1.2.5"></script>                  
+ 	</head>
+	<body>
+    
+<!-- 		    <form ng-submit="submitRegistrationForm(form.$valid)" name="gxRegisterForm" novalidate >
+				  <fieldset> -->
+<!-- 		      <legend class="fieldSetStyle">Register - Explore Galaxy</legend>			 -->
+<!-- 		         <div id="div1">  -->
+<!--                                 <div id="div1-1"> -->
+<!--                                     <div ><input class="inputStyle" type="text" name="firstName" ng-maxlength="50" ng-model="user.firstName" placeholder="First Name" required/> -->
+<!--                                     <span class="error" ng-show="form.firstName.$dirty &&  form.firstName.$error.required">More than 50 characters not allowed!</span></div> -->
+<!--                                      <div><input class="inputStyle" type="text" name="lastName" ng-maxlength="50" ng-model="user.lastName" placeholder="Last Name" required/> -->
+<!--                                     <span ng-show="form.lastName.$dirty &&  form.lastName.$error.required"></span></div> -->
+
+<!--                                     <div><input class="inputStyle" type="text" name="designation" ng-maxlength="50" ng-model="user.designation" placeholder="Designation" required/> -->
+<!--                                     <span ng-show="form.designation.$dirty &&  form.designation.$error.required"></span></div> -->
+
+<!--                                     <div><input class="inputStyle" type="text" name="companyname" ng-maxlength="100" ng-model="user.companyname" placeholder="*Company Name" required/>    -->
+<!--                                     <span ng-show="form.companyname.$dirty &&  form.companyname.$error.required">Please enter your Company Name!</span></div> -->
+
+<!--                                     <div><input class="inputStyle" type="text" name="address" ng-maxlength="250" ng-model="user.address" placeholder="Company Address" required/> -->
+<!--                                     <span ng-show="form.address.$dirty &&  form.address.$error.required"></span></div>     -->
+
+<!--                                     <div> -->
+<!--                                         <select  ng-model="country" data-ng-options="country.name for country in acCountries" data-ng-change="getStatesForCountry()"> -->
+<!--                                         <option value="">Select Country</option></select> -->
+<!--                                     </div> -->
+
+<!--                                     <div class="stateClass"> -->
+<!--                                         <select  ng-hide="availableStates.length < 1"   ng-model="state" data-ng-options="state.name for state in availableStates" > -->
+<!--                                         <option value="">Select State</option></select> -->
+<!--                                     </div> -->
+
+<!--                                     <div> -->
+<!--                                         <input class="inputStyle" ng-show="availableStates.length == 0" type="text" ng-maxlength="150" name ="state" ng-model="state" placeholder="State/Province" required/> -->
+<!--                                         <span ng-show="form.state.$dirty &&  form.state.$error.required"></span> -->
+<!--                                     </div> -->
+
+
+<!--                                     <div> -->
+<!--                                       <input class="inputStyle" type="url" name ="website" ng-maxlength="100" ng-model="user.website" pattern="https?://.+"  placeholder="http://companywebsite.com/" required/> -->
+<!--                                       <span ng-show="form.website.$dirty &&  form.website.$error.required"></span> -->
+<!--                                       <span ng-show="form.website.$dirty && form.website.$error.url"></span> -->
+<!--                                     </div> -->
+<!--                                 </div> -->
+<!--                                 <div id="div1-2"> -->
+<!--                                     <div> -->
+<!--                                        <input class="inputStyle" type="text" ng-maxlength="50" name ="userid" ng-model="user.userid" placeholder="*User Id" required/> -->
+<!--                                        <span ng-show="form.userid.$dirty &&  form.userid.$error.required">Please enter your User Id!</span> -->
+<!--                                     </div> -->
+<!--                                     <div> -->
+<!--                                         <input  class="inputStyle"  id="email" name="email" ng-model="user.email" ng-maxlength="100" required="true" type="email" placeholder="*Primary Email Id"/> -->
+<!--                                         <span ng-show="form.email.$dirty &&  form.email.$error.required">Please enter your email Id!</span> -->
+<!--                                     </div> -->
+<!--                                     <div> -->
+<!--                                         <input  class="inputStyle"  name="emailConfirm" ng-model="user.emailConfirm" ng-maxlength="100"  required="true" type="email"  match="user.email" placeholder="*Confirm Primary Email Id"/> -->
+<!--                                         <div ng-show="form.emailConfirm.$error.mismatch"> -->
+<!--                                            <span class="msg-error">Please confirm your email id</span> -->
+<!--                                          </div> -->
+<!--                                     </div> -->
+<!--                                     <div> -->
+<!--                                         <input  class="inputStyle"  name="emailSecond" ng-model="user.emailSecond" ng-maxlength="100" required="true" type="email"   placeholder="Seconday Email Id"/> -->
+<!--                                         <div ng-show="(form.emailSecond.$dirty && (user.email == user.emailSecond))"> -->
+<!--                                           <span >Please enter your email id!</span> -->
+<!--                                          </div> -->
+<!--                                     </div> -->
+<!--                                     <div> -->
+<!--                                         <input class="inputStyle" type="tel" name="cpno" ng-minlength="10" ng-maxlength="15" ng-model="user.cpno" placeholder="Mobile Number" onkeyup="this.value=this.value.replace(/[^\d]/,'')" required/> -->
+<!--                                         <span ng-show="form.cpno.$dirty &&  form.cpno.$error.required"></span> -->
+<!--                                     </div> -->
+
+<!--                                     <div> -->
+<!--                                     <input class="inputStyle" type="tel" name="phoneno" ng-minlength="10" ng-maxlength="15" ng-model="user.phoneno"  placeholder="Landline Number" onkeyup="this.value=this.value.replace(/[^\d]/,'')" required/> -->
+<!--                                     <span ng-show="form.phoneno.$dirty &&  form.phoneno.$error.required"></span> -->
+<!--                                     </div> -->
+
+<!--                                     <div> -->
+<!--                                     <input class="inputStyle" type="tel" name="faxno" ng-minlength="10" ng-maxlength="15" ng-model="user.faxno" placeholder="Fax Number" onkeyup="this.value=this.value.replace(/[^\d]/,'')" required/> -->
+<!--                                     <span ng-show="form.faxno.$dirty &&  form.faxno.$error.required"></span> -->
+<!--                                     </div> -->
+<!--                                 </div> -->
+<!--                                 <div id="div1-3"> -->
+<!--                                     <div> -->
+<!--                                     <textarea type="text" name="message" ng-model="user.message"  ng-maxlength="1000" placeholder="Message..."></textarea> -->
+<!--                                     <span ng-show="form.message.$dirty &&  form.message.$error.required"></span> -->
+<!--                                     </div>    -->
+
+<!--                                   <div class="captchaStyle">     -->
+	                                  
+<!-- 	                                    <input type="text" id="txtCaptcha" style="background-image:url(images/captcha-bg.png);" ng-model="objCaptcha.original"/> -->
+<!-- 	                                    <input type="button" id="btnrefresh" value="Refresh" ng-click="addCaptchaToForm()" /></br> -->
+<!-- 	                                    <input type="text" id="txtInput" name="captcha" placeholder="Enter Code" ng-model="objCaptcha.userValue"/>  -->
+<!--                                     </div> -->
+
+
+<!--                                     <div class="buttons" > -->
+                                    
+<!--                                     <button  ng-hide="btnHide" model="isDisabled" id="submitBtn" ng-disabled="!form.$valid" type="submit" class="">Submit</button> -->
+<!--                                     <button  ng-hide="btnHide" id="resetBtn"  type="reset" ng-click="resetRegistrationForm()">Reset</button> </div> -->
+                                    <div ng-show="showMessage">Thank you <strong>{{user.firstName}}</strong> for registering. We will get in touch with you through your email id and phone number.</div>
+<!--                                  </div>   -->
+<!--                          </div> -->
+<!-- 		    </fieldset> -->
+<!--   	</form>  -->
+<!--   </body> -->
+<!-- ======= -->
+        <section id="gxRegistration">  
+	    	<div class="gx-page-title">Register Now</div>
+	        <form ng-submit="submitRegistrationForm(form.$valid)" name="form" novalidate>
+	        	<div class="gx-heading1">Company Details</div>
+	        	<label>
+			        <span>Company Name <sup class="gx-mandatory">*</sup>:</span>
+			        <input type="text" class="gx-etext-field gx-mandatory-field" name="companyname" ng-maxlength="100" ng-model="user.companyname" required/> 
+	       		    <span class="gx-error-msg" ng-show="form.companyname.$dirty &&  form.companyname.$error.required">Please enter your Company Name!</span>
+			    </label>
+			    
+			    <label>
+			        <span>Company Address:</span>
+			        <input type="text" class="gx-etext-field" name="address" ng-maxlength="250" ng-model="user.address" required/>
+			        <br>   
+	       		    <span class="gx-error-msg" ng-show="form.address.$dirty &&  form.address.$error.required"></span>
+			    </label>
+			    
+			    <div class="gx-2col-stack">
+			    	<label>
+			        	<span>Country:</span>
+			        	<select class="gx-dtext-field" ng-model="country" data-ng-options="country.name for country in acCountries" data-ng-change="getStatesForCountry()">
+	                       <option class="gx-drop-down" value="">Select Country</option>
+	                   	</select>
+	                </label>
+	             </div>
+	             
+		    	 <div class="gx-2col-stack"> 
+			     	<label>
+	                   <span>State:</span>
+	                   <select class="gx-dtext-field" ng-hide="availableStates.length < 1"   ng-model="state" data-ng-options="state.name for state in availableStates" >
+	                        <option class="gx-drop-down" value="">Select State</option>
+	                   </select>
+	                   <input type="text" class="gx-dtext-field" ng-show="availableStates.length == 0" ng-maxlength="150" name ="state" ng-model="state" placeholder="State/Province" required/>
+	                   <span class="gx-error-msg" ng-show="form.state.$dirty &&  form.state.$error.required"></span>
+			    	</label>
+			    </div> 
+			    
+			     <div class="gx-2col-stack">
+			    	 <label>
+				        <span>Landline Number:</span>
+				        <input type="tel" class="gx-dtext-field" name="phoneno" ng-minlength="10" ng-maxlength="15" ng-model="user.phoneno"  onkeyup="this.value=this.value.replace(/[^\d]/,'')" required/>
+				        <br>   
+		       		    <span class="gx-error-msg"  ng-show="form.phoneno.$dirty &&  form.phoneno.$error.required"></span>
+				    </label>
+	             </div>
+	             
+		    	 <div class="gx-2col-stack"> 
+			     	<label>
+				        <span>Fax Number:</span>
+				        <input type="tel" class="gx-dtext-field" name="faxno" ng-minlength="10" ng-maxlength="15" ng-model="user.faxno" onkeyup="this.value=this.value.replace(/[^\d]/,'')" required/>                            
+				        <br>   
+		       		    <span class="gx-error-msg" ng-show="form.faxno.$dirty &&  form.faxno.$error.required"></span>
+				    </label>
+			    </div>
+			    
+			    <label>
+			        <span>Company Website <sup class="gx-mandatory">*</sup>:</span>
+			        <input type="url"  class="gx-etext-field" name ="website" ng-maxlength="100" ng-model="user.website" pattern="https?://.+"  required/>
+			        <br>   
+	       		    <span class="gx-error-msg" ng-show="form.website.$dirty &&  form.website.$error.required"></span>
+                    <span class="gx-error-msg" ng-show="form.website.$dirty && form.website.$error.url"></span>
+			    </label>
+			    <br>
+			    <div class="gx-heading1">Contact Details</div>			   
+			        <span>Gender <sup class="gx-mandatory">*</sup>:</span> 
+				        <input type="radio" id="gxGenderMale" name="gx-gender" value="all">
+						<label class="gx-gender" for="gxGenderMale">Male</label>
+						<input type="radio" id="gxGenderFemale" name="gx-gender" value="false">
+						<label class="gx-gender" for="gxGenderFemale">Female</label>  		    
+			     <div class="gx-2col-stack">
+			    	 <label>
+				        <span>First Name <sup class="gx-mandatory">*</sup>:</span>
+				        <input type="text" class="gx-dtext-field" name="firstName" ng-maxlength="50" ng-model="user.firstName" required/> 
+				        <br>   
+		       		    <span class="gx-error-msg" class="gx-error-msg" ng-show="form.firstName.$dirty &&  form.firstName.$error.required">More than 50 characters not allowed!</span>
+				    </label>
+	             </div>
+	             
+		    	 <div class="gx-2col-stack">
+			    	 <label>
+				        <span>Last Name <sup class="gx-mandatory">*</sup>:</span>
+				        <input type="text" class="gx-dtext-field" name="lastName" ng-maxlength="50" ng-model="user.lastName" required/>
+				        <br>   
+		       		    <span class="gx-error-msg" ng-show="form.lastName.$dirty &&  form.lastName.$error.required"></span>
+				    </label>
+	             </div>
+	             
+	              <div class="gx-2col-stack">
+			    	 <label>
+				        <span>Designation <sup class="gx-mandatory">*</sup>:</span>
+				        <input type="text" class="gx-dtext-field" name="designation" ng-maxlength="50" ng-model="user.designation" required/>
+				        <br>   
+		       		    <span class="gx-error-msg" ng-show="form.designation.$dirty &&  form.designation.$error.required"></span>
+				    </label>
+	             </div>
+	             
+		    	 <div class="gx-2col-stack">
+			    	 <label>
+				        <span>Mobile Number <sup class="gx-mandatory">*</sup>:</span>
+				        <input type="tel" class="gx-dtext-field" name="cpno" ng-minlength="10" ng-maxlength="15" ng-model="user.cpno" onkeyup="this.value=this.value.replace(/[^\d]/,'')" required/>
+				        <br>   
+		       		    <span class="gx-error-msg" ng-show="form.cpno.$dirty &&  form.cpno.$error.required"></span>
+				    </label>
+	             </div>
+	             
+	             <label>
+			        <span>User Name <sup class="gx-mandatory">*</sup>:</span>
+			       <input type="text"  class="gx-etext-field" ng-maxlength="50" name ="userid" ng-model="user.userid" required/>
+			        <br>   
+	       		    <span class="gx-error-msg" ng-show="form.userid.$dirty &&  form.userid.$error.required">Please enter your User Id!</span>
+			    </label>
+			    
+			    <label>
+			        <span>Primary Email Id <sup class="gx-mandatory">*</sup>:</span>
+			        <input type="email"  class="gx-etext-field gx-mandatory-field" id="email" name="email" ng-model="user.email" ng-maxlength="100" required="true" />
+			        <br>   
+	       		    <span class="gx-error-msg" ng-show="form.email.$dirty &&  form.email.$error.required">Please enter your email Id!</span>
+			    </label>
+			    
+			    <label>
+			        <span>Confirm Primary Email Id <sup class="gx-mandatory">*</sup>:</span>
+			        <input  type="email" class="gx-etext-field gx-mandatory-field" name="emailConfirm" ng-model="user.emailConfirm" ng-maxlength="100"  required="true" match="user.email" />
+			        <br>   
+	       		   <div ng-show="form.emailConfirm.$error.mismatch">
+                      <span class="gx-error-msg">Please confirm your email id</span>
+                   </div>
+			    </label>
+			    
+			    <label>
+			        <span>Seconday Email Id:</span>
+			        <input  type="email" class="gx-etext-field" name="emailSecond" ng-model="user.emailSecond" ng-maxlength="100" required="true" />
+			        <br>   
+	       		   <div ng-show="(form.emailSecond.$dirty && (user.email == user.emailSecond))">
+                      <span class="gx-error-msg">Please enter your email id!</span>
+                    </div>
+			    </label>
+			    
+			    <label>
+			        <span>Message:</span>
+			        <textarea type="text" class="gx-etext-field" name="message" ng-model="user.message"  ng-maxlength="1000"></textarea>
+                    <span ng-show="form.message.$dirty &&  form.message.$error.required"></span>
+			    </label>
+			    <br>
+			     <label>
+			    	 <input type="text" class="gx-login-captcha-field" id="txtCaptcha" style="background-image:url(themes/default/images/captcha-bg.png);" ng-model="objCaptcha.original"/>
+			    	 <div class="gx-icon36 gx-icon" id="btnrefresh" ng-click="addCaptchaToForm()"><img src="themes/default/images/icons/white/reload.png" class="gx-centered"></div>
+			    	 <input type="text" class="gx-ctext-field" id="txtInput" name="captcha" placeholder="Enter Code" ng-model="objCaptcha.userValue"/>
+	             </label> 
+	             <label>
+			    	<button class="gx-btn" ng-hide="btnHide" model="isDisabled" id="submitBtn" ng-disabled="!form.$valid" type="submit">Submit</button>
+                    <button  class="gx-btn" ng-hide="btnHide" id="resetBtn"  type="reset" ng-click="resetRegistrationForm()">Reset</button>
+                    <div ng-show="showMessage">Thank you <strong>{{user.firstName}}</strong> for registering. We will get in touch with you through your email id and phone number.</div>
+	             </label>  
+			</form> 
+    	</section>
+	</body>
+
+</html>

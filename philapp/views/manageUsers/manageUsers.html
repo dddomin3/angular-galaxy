@@ -1,0 +1,39 @@
+<link rel="stylesheet" href="../../themes/default/css/adminNotification/bootstrap.min.css" />
+  <link href="../../themes/default/css/gx-login.css" rel="stylesheet" type="text/css" /> 
+
+		<style>
+		
+		</style>
+ <link href="../../themes/default/css/gx-main.css" rel="stylesheet" type="text/css" /> 
+</head>
+<body>
+<div id="gxtleft"><img src="../../themes/default/images/logo.png" style="height:50px;width:100px;"> <img src="../../themes/default/images/home.png"> <img src="../../themes/default/images/menu.png"></div> <div id="gxtright"><img src="../../themes/default/images/favourites.png"> <img src="../../themes/default/images/alerts.png"> <img src="../../themes/default/images/dashboard.png">
+<img src="../../themes/default/images/help.png"> <img src="../../themes/default/images/profile.png"> <img src="../../themes/default/images/logout.png"></div>
+<div id="gxtloc">You are here : Home</div>
+<div id="gxbgtop"><div id="gxttm1">Manage Users</div><div id="gxttm4"><input type="button" style="height:25px;width:90px;" value="Create User" onClick="location.href='#CreateUsers'"></div><div id="gxttm2"><input type="button" ng-csv="rows" filename="data.csv" style="height:25px;width:90px;" value="Export User"></div><div id="gxttm3"><input type="button" onClick="location.href='#ImportClients'" style="height:25px;width:90px;" value="Import User"></div></div>
+<br/>
+<br/>
+<div id="gxtble">
+      
+    <table ng-table="tableParams" class="table" height="60%">
+        <tbody ng-repeat="p in $data">
+        
+        <tr id="tr{{p.id}}" ng-class-odd="'odd'" ng-class-even="'even'">
+           <td class="rowTd" data-title="'SiNo'" sortable="'index'">{{$index+1}}</td>
+            <!-- <td class="rowTd" data-title="'SiNo'" sortable="'id'">{{p.id}}</td>-->
+            <td class="rowTd" style="cursor: pointer;" data-title="'Company Name'"sortable="'companyname'" ng-click="showCompanyDetails(p)"><a href="">{{p.companyname}}</a></td>
+            <td class="rowTd" data-title="'User Id'"sortable="'userid'">{{p.userid}}</td>
+            <td class="rowTd" data-title="'Phone No'"sortable="'phone'">{{p.phone}}</td>
+            <td class="rowTd" data-title="'Primary Email'" sortable="'email'">{{p.email}}</td>
+            <td class="rowTd" data-title="'Enquiry Date & Time'"sortable="'date'">{{p.date}}</td>
+            <td class="rowTd" style="cursor: pointer;" data-title="'Status'" sortable="'status'" ng-click="showPopupStatus(p)"><a href="">{{p.status}}</a></td>
+            <td class="rowTd" style="cursor: pointer;" data-title="'Action'" sortable="'actions'" ng-click="showPopupAction(p)"><a href="" onClick="location.href='#ViewUsers'">View</a>&nbsp;|&nbsp;<a href="" onClick="location.href='#EditUsers'">Edit</a>&nbsp;|&nbsp;<a href="" ng-click="deleteRow(p)" ng-hide="isTemp($index)">Delete</a></td>
+           <!--   <td class="rowTd" style="cursor: pointer;"  ng-click="deleteRow(row)" ng-hide="isTemp($index)"><button><img src="images/del.png"/></td>-->
+            	</tr>
+       
+    </tbody>
+    </table>
+</div></div>
+</div>
+<div id="gxftr"><div id="gxff1">Copyright 2014 Pacific Controls. All Rights Reserved.</div><div id="gxff2"><a href="#">Privacy Policy</a> &nbsp;&nbsp; <a href="#">Terms & Conditions</a></div></div>
+</div></body>
