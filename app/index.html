@@ -1,48 +1,292 @@
-<!doctype html>
-<html lang="en" ng-app="phonecatApp">
-<head>
-	<meta charset="utf-8">
-	<title>Google Phone Gallery</title>
-	<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
-	<link rel="stylesheet" href="css/app.css">
-	<script src="bower_components/angular/angular.js"></script>
-	<script src="bower_components/angular-route/angular-route.js"></script>
-	<script src="js/app.js"></script>
-	<script src="js/controllers.js"></script>
-
-	<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
-	<link rel="stylesheet" href="css/leaflet.draw.css" />
-	<link rel="stylesheet" href="css/MarkerCluster.css" />
-	<link rel="stylesheet" href="css/MarkerCluster.Default.css" />
-	<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
-	<script src="js/angular-leaflet-directive.min.js"></script>
-	<script src="js/leaflet.draw.js"></script>
-	<script src="js/leaflet.markercluster-src.js"></script>
+<html ng-app="gxMainApp" class="ng-scope">
+	<head>
+	    <title>Galaxy 2021 - Platform of Platforms</title>
+		
+		 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	
-	<!--stylesheet for info box -->
-	<style>
-		#map {
-		}
+		    <link href="../../themes/default/css/gx-main.css" rel="stylesheet" type="text/css" /> 
+            <link rel="stylesheet" href="/app/bower_components/bootstrap/dist/css/bootstrap.min.css" />
+		    <link href="src/skin/ui.dtree.css" rel="stylesheet" type="text/css" id="skinSheet">
+			<link href="/app/css/dashboard.css" rel="stylesheet">
+			<link rel="stylesheet" type="text/css" href="/app/bower_components/angular-tree-control/css/tree-control.css">
+			<link rel="stylesheet" type="text/css" href="/app/bower_components/angular-tree-control/css/tree-control-attribute.css">
+			<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.1/leaflet.css">
+			<link rel="stylesheet" href="/app/bower_components/leaflet/dist/leaflet.css">
+			<link rel="stylesheet" href="/app/bower_components/angular.treeview/css/angular.treeview.css">
+			<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/dc/1.7.0/dc.css"/>
+			<link data-require="ng-table@*" data-semver="0.3.0" rel="stylesheet" href="../../themes/default/css/adminNotification/ngTable.css" />
+	</head>
+	<body>
+			
+	    	<!--  this is for switching the views and laying out the contents here -->
+	
+	<div header ng-show="showHeader"></div>
+	<div class="container">
+      <div class="row">
+		<div class="col-sm-3 col-md-2 sidebar" ng-show="showSidebar" ng-controller="sidebar">
+        <div class="row">
+		  Search: <input ng-model="query">
+		</div>
+		<div class="row"> 
+			  <p ng-repeat="entity in filtered = (entities._embedded.mobileAsset | filter:query) | orderBy:orderProp">
+			  </p>
+			
+			<div
+			  data-angular-treeview="true"
+			  data-tree-id="abc"
+			  data-tree-model="filtered"
+			  data-node-id="eid"
+			  data-node-label="eid"
+			  data-node-children="lat" >
+			</div>
+		</div>
+        </div>
+		
+		<div ng-controller="viewController">
+			<div ng-attr-class={{viewClass}}>
+				<!-- begin -->
+				<div ng-controller="stockControl">
+					<h2> Yearly Consumption </h2>	
+					<strong>Yearly Performance</strong>(radius: fluctionation/index ratio, color: gain/loss)
+					<br>				
+					<dc-chart dc-chart = "bubbleChart"
+						dc-width="990" 
+						dc-height="250" 
+						dc-transition-duration="1500"
+						dc-margins="{top: 10, right: 50, bottom: 30, left: 40}"
+						dc-dimension="monthlyDimension"
+						dc-group="monthlyPerformanceGroup"
+						dc-colors="colorbrewer.RdYlGn[9]"
+						dc-color-domain="[-500, 500]"
+						dc-max-bubble-relative-size="0.3"
+						dc-x="d3.scale.linear().domain([-2500, 2500])"
+						dc-y="d3.scale.linear().domain([-100, 100])"
+						dc-r="d3.scale.linear().domain([0, 4000])"
+						dc-elastic-x="true"
+						dc-elastic-y="true"
+						dc-y-axis-padding="100"
+						dc-x-axis-padding="500"
+						dc-render-horizontal-grid-lines="true"
+						dc-render-vertical-grid-lines="true"
+						dc-x-axis-label="'Index Gain'"
+						dc-y-axis-label="'Index Gain %'"
+						dc-render-label="true"
+						dc-render-title="true"
+						dc-options="bubbleChartOptions">
+					</dc-chart>
+				<br>
+				<a class="reset">reset</a>
+				<div class="clearfix"></div>
+			<div class="row">
+				<div class="col-xs-3">
+					<strong>Days by gain/loss</strong>
+						<a class ="reset">reset</a>
+						<div class="clearfix"></div>
+					<dc-chart 
+						dc-chart="pieChart" 
+						dc-width="180" 
+						dc-height="180" 
+						dc-radius="80" 
+						dc-dimension="gainOrLoss" 
+						dc-group="gainOrLossGroup" 
+						class="col-xs-3">
+					</dc-chart>
+				</div>
+				
+				<div class="col-xs-3">
+					<strong>Quarters</strong>
+						<a class="reset">reset</a>
+						<div class="clearfix"></div>
+					<dc-chart 
+						dc-chart="pieChart" 
+						dc-width="180" 
+						dc-height="180" 
+						dc-radius="80" 
+						dc-inner-radius="30" 
+						dc-dimension="quarter"
+						dc-group="quarterGroup" 
+						class="col-xs-3">	
+					</dc-chart>
+				</div>
+				
+				<div class="col-xs-3">
+					<strong>Day of Week</strong>
+					<a class="reset">reset</a>
+					<div class="clearfix"></div>
+					<dc-chart 
+						dc-chart="rowChart" 
+						dc-width="180" 
+						dc-height="180" 
+						dc-margins="{top: 20, left: 10, right: 10, bottom: 20}" 
+						dc-group="dayOfWeekGroup" 
+						dc-dimension="dayOfWeek" 
+						dc-ordinal-colors="['#3182bd', '#6baed6', '#9ecae1', '#c6dbef', '#dadaeb']" 
+						dc-elastic-x="true" 
+						dc-post-setup-chart="dayOfWeekPostSetupChart" 
+						class="col-xs-3">
+					</dc-chart>
+				</div>
+				
+				<div class="col-xs-3">
+					<strong>Days by Fluctuation(%)</strong>
+							<span class="reset">
+								range:
+								<span class="filter"></span>
+							</span>
+							<a class="reset">reset</a>
+							<div class="clearfix"></div>
+					<dc-chart 
+						dc-chart="barChart" 
+						dc-width="420" 
+						dc-height="180" 
+						dc-margins="{top: 10, right: 50, bottom: 30, left: 40}" 
+						dc-dimension="fluctuation" 
+						dc-group="fluctuationGroup" 
+						dc-elastic-y="true" 
+						dc-center-bar="true" 
+						dc-gap="1" 
+						dc-round="dc.round.floor" 
+						dc-always-use-rounding="true" 
+						dc-x="d3.scale.linear().domain([-25, 25])" 
+						dc-render-horizontal-grid-lines="true" 
+						dc-options="fluctuationChartOptions" 
+						dc-post-setup-chart="fluctuationChartPostSetupChart" 
+						class="col-xs-3">
+					</dc-chart>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-3">
+					<strong>Monthly Index Abs Move & Volume/500,000 Chart</strong>
+					<span style="display: none;" class="reset">
+						range:<span class="filter"></span>
+					</span>
+					<a class="reset">reset</a>
+					<div class="clearfix"></div>
+					<dc-chart 
+						dc-chart="lineChart" 
+						dc-render-area="true" 
+						dc-width="990" 
+						dc-height="200" 
+						dc-transition-duration="1000" 
+						dc-margins="{top: 30, right: 50, bottom: 25, left: 40}" 
+						dc-dimension="moveMonths" 
+						dc-mouse-zoomable="true" 
+						dc-range-chart="volumeChart" 
+						dc-x="d3.time.scale().domain([Date(1985, 0, 1), Date(2012, 11, 31)])" 
+						dc-round="d3.time.month.round" 
+						dc-x-units="d3.time.months" 
+						dc-elastic-y="true" 
+						dc-render-horizontal-grid-lines="true" 
+						dc-legend="dc.legend().x(800).y(10).itemHeight(13).gap(5)" 
+						dc-brush-on="false" 
+						dc-options="moveChartOptions" 
+						dc-post-setup-chart="moveChartPostSetupChart" 
+						class="dc-chart">
+					</dc-chart>
+				</div>
+			</div>
+			<div class="row">
+				<dc-chart	
+					dc-chart="barChart" 
+					dc-name="'volumeChart'" 
+					dc-width="990" 
+					dc-height="40" 
+					dc-margins="{top: 0, right: 50, bottom: 20, left: 40}" 
+					dc-dimension="moveMonths" 
+					dc-group="volumeByMonthGroup" 
+					dc-center-bar="true" 
+					dc-gap="Date(1985, 0, 1)" 
+					dc-x="d3.time.scale().domain([Date(1985, 0, 1), Date(2012, 11, 31)])" 
+					dc-round="d3.time.month.round" 
+					dc-always-use-rounding="true" 
+					dc-x-units="d3.time.months" 
+					class="dc-chart">
+				</dc-chart>
+				<p class="pull-right">
+					select a time range to zoom in
+				</p>
+			</div>
+				
+			<!-- end -->
+			
+			
+				</div>
+			</div>
+		</div>
+		<div class="row" ng-show="showFooter">
+			<div footer ng-show="showFooter"></div>
+		</div>
+	  </div>
+	</div>
 
-		.info {
-			padding: 6px 8px;
-			font: 14px/16px Arial, Helvetica, sans-serif;
-			background: white;
-			background: rgba(255,255,255,0.8);
-			box-shadow: 0 0 15px rgba(0,0,0,0.2);
-			border-radius: 5px;
-		}
-		.info h4 {
-			margin: 0 0 5px;
-			color: #777;
-		}
-	</style>
-  
-  
-</head>
-<body>
+			<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.js"></script>	
+			<script data-require="ng-table@*" data-semver="0.3.0" src="libs/ng-table.js"></script>
+			<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular-route.js"></script>	
+			<script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.10/angular-ui-router.js"></script>		
+			<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular-sanitize.js"></script>	
+			<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular-animate.min.js"></script>	
+			<script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.10.0.js"></script>
 
-  <div ng-view></div>
+             <script src="libs/ng-csv.min.js"></script>
 
-</body>
+		    <script type="text/javascript" src="config/app.js"></script>
+			
+			<!--  for services here NOTE angular imports should be FIRST -->
+			<script type="text/javascript"  src="/app/bower_components/d3/d3.min.js"></script>
+			
+			<!-- jQuery -->
+		    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" type="text/javascript"></script>
+		    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js" type="text/javascript"></script>
+		    <script src="libs/jquery/jquery-ui.js"></script>
+            <script src="libs/jquery/jquery-1.8.2.js"></script>
+			
+			<script src="libs/jquery/jquery.js" type="text/javascript"></script>
+			<script src="libs/jquery/jquery-ui.custom.js" type="text/javascript"></script>
+			<script src="libs/jquery/jquery.cookie.js" type="text/javascript"></script>
+		   <!--  needed for the ngDialog case! -->
+	    	<script src="libs/ngDialog.js"></script>	    
+	    	<script src="libs/jquery/jquery.csv-0.71.min.js"></script>
+	    	<script src="libs/ng-tree.js"></script>
+	    	
+	    	
+			<!--  Register the controllers and directives here.. -->
+			<script type="text/javascript"  src="../services/mainService/gxServiceWrapper.js"></script>		
+			<script type="text/javascript"  src="../controllers/loginFlow/loginFlowController.js"></script>
+			<script type="text/javascript"  src="../controllers/adminNotification/notificationController.js"></script>
+			<script type="text/javascript"  src="../controllers/loginflow/registrationFlowController.js"></script>
+			<script type="text/javascript"  src="../directives/roleManagement/roleMgntDirective.js"></script>
+			<script type="text/javascript"  src="../directives/loginFlow/loginDirective.js"></script>			
+			<script type="text/javascript"  src="../services/home/homeProfileDataService.js"></script>		
+			<script type="text/javascript"  src="../services/loginFlow/gxregistrationService.js"></script>	
+			<script type="text/javascript"  src="../services/adminNotification/adminNotificationDataService.js"></script>		
+	    	<script type="text/javascript"  src="../controllers/home/homeController.js"></script>
+	    	<script type="text/javascript"  src="../controllers/manageUsers/TreeControllers.js"></script>
+	    	<script type="text/javascript"  src="../controllers/manageUsers/manageUsersController.js"></script>
+			<script type="text/javascript"  src="../controllers/manageVehicles/manageVehiclesController.js"></script>
+			<script type="text/javascript"  src="../controllers/manageVehicles/dynamicLayersController.js"></script>
+			<script src="/app/bower_components/angular.treeview/angular.treeview.min.js"></script>
+			
+	    	<script type="text/javascript"  src="../controllers/roleManagement/roleManagementController.js"></script>
+			<script type="text/javascript" src="/app/bower_components/angular-tree-control/angular-tree-control.js"></script>
+
+			<script src="http://cdn.leafletjs.com/leaflet-0.7.1/leaflet.js"></script>
+			<script src="/app/js/angular-leaflet-directive.min.js"></script>
+			
+			<script type="text/javascript"  src="../directives/header_footer.js"></script>
+			<script type="text/javascript"  src="../controllers/view.js"></script>
+			<script type="text/javascript"  src="../controllers/tree.js"></script>
+			<script type="text/javascript"  src="../controllers/d3Bars.js"></script>
+			<script type="text/javascript"  src="../controllers/d3CandleStick.js"></script>
+			<script type="text/javascript"  src="../controllers/stockctrl.js"></script>
+			
+			<!--angular dc -->
+			<script type="text/javascript" src="/app/bower_components/colorbrewer/colorbrewer.js"></script>
+			<script type="text/javascript" src="/app/bower_components/lodash/dist/lodash.min.js"></script>
+			<script type="text/javascript" src="/app/bower_components/lodash/dist/lodash.underscore.min.js"></script>
+			<script type="text/javascript" src="/app/bower_components/lodash/dist/lodash.compat.min.js"></script>
+			<script type="text/javascript" src="/app/bower_components/crossfilter/crossfilter.min.js"></script>
+			<script type="text/javascript"  src="/app/bower_components/dcjs/dc.min.js"></script>	
+			<script type="text/javascript"  src="/app/bower_components/angular-dc/dist/angular-dc.js"></script>	
+	</body>
 </html>

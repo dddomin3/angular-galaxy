@@ -1,0 +1,38 @@
+<html ng-app>
+<head>
+<meta charset="UTF-8">
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.1/angular.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.1/angular-route.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.1/angular-sanitize.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.1/angular-animate.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.1/angular-cookies.min.js"></script>
+<link href="../../themes/default/css/gx-main.css" rel="stylesheet" type="text/css" /> 
+  <link href="../../themes/default/css/gx-login.css" rel="stylesheet" type="text/css" /> 
+<style>
+
+</style>
+ </head>
+<body>
+<div id="gxtleft"><img src="../../themes/default/images/logo.png" style="height:50px;width:100px;"> <img src="../../themes/default/images/home.png"> <img src="../../themes/default/images/menu.png"></div> <div id="gxtright"><img src="../../themes/default/images/favourites.png"> <img src="../../themes/default/images/alerts.png"> <img src="../../themes/default/images/dashboard.png">
+<img src="../../themes/default/images/help.png"> <img src="../../themes/default/images/profile.png"> <img src="../../themes/default/images/logout.png"></div>
+<div id="gxtloc">You are here : Home</div>
+<div id="gxbgtop"><div id="gxttm1">View Users</div></div>
+<div id="gxfrm1">
+<br><b>User ID</b>*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" style="height:3.5%;width:15%;"><br><br>
+<b>User Name</b>*&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" style="height:3.5%;width:15%;"><br><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value="Reset Password?" style="height:3.5%;width:10%;"><br><br>
+<b>Email</b>*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" value="example@example.com" style="height:3.5%;width:15%;"></div>
+<div id="gxfrm2">
+<br><b>Role</b>*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<select style="height:3.5%;width:15%;"><option value="Manager">Manager</option><option value="Supervisor">Supervisor</option></select><br><br>
+<b>Contact No</b>*&nbsp;&nbsp;<input type="text" style="height:3.5%;width:3%;">&nbsp;&nbsp;&nbsp;<input type="text" style="height:3.5%;width:11%;"><br><br>
+<b>Location</b>*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" value="Latitude" style="height:3.5%;width:7.2%;">&nbsp;&nbsp;<input type="text" value="Longitude" style="height:3.5%;width:7.2%;"><br><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" id="gxActive" name="gx-status" value="all">Active&nbsp;&nbsp;&nbsp;<input type="radio" id="gxInactive" name="gx-status" value="all">Inactive
+<br><br><br>	<input type="button" onClick="location.href='#ManageUsers'" value="Save" style="height:4%;width:10%;">&nbsp;&nbsp;&nbsp;<input type="button" onClick="location.href='#ManageUsers'" value="Cancel" style="height:4%;width:10%;">					</div>
+<div id="gxtreepos">
+<br><b>Select Entity List:</b><br>
+<div id="gxtree"></div>
+</div>
+<div id="gxftr"><div id="gxff1">Copyright 2014 Pacific Controls. All Rights Reserved.</div><div id="gxff2"><a href="#">Privacy Policy</a> &nbsp;&nbsp; <a href="#">Terms & Conditions</a></div></div>
+</body>
+
+</html>
