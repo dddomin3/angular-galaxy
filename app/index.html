@@ -123,6 +123,7 @@
 						dc-ordinal-colors="['#3182bd', '#6baed6', '#9ecae1', '#c6dbef', '#dadaeb']" 
 						dc-elastic-x="true" 
 						dc-post-setup-chart="dayOfWeekPostSetupChart" 
+
 						class="col-xs-3">
 					</dc-chart>
 				</div>
@@ -173,7 +174,7 @@
 						dc-dimension="moveMonths" 
 						dc-mouse-zoomable="true" 
 						dc-range-chart="volumeChart" 
-						dc-x="d3.time.scale().domain([Date(1985, 0, 1), Date(2012, 11, 31)])" 
+						dc-x="d3.time.scale().domain([Date(2004, 0, 1), Date(2014, 11, 31)])" 
 						dc-round="d3.time.month.round" 
 						dc-x-units="d3.time.months" 
 						dc-elastic-y="true" 
@@ -196,8 +197,7 @@
 					dc-dimension="moveMonths" 
 					dc-group="volumeByMonthGroup" 
 					dc-center-bar="true" 
-					dc-gap="Date(1985, 0, 1)" 
-					dc-x="d3.time.scale().domain([Date(1985, 0, 1), Date(2012, 11, 31)])" 
+					dc-x="d3.time.scale().domain([Date(2011, 0, 1), Date(2014, 11, 31)])" 
 					dc-round="d3.time.month.round" 
 					dc-always-use-rounding="true" 
 					dc-x-units="d3.time.months" 

@@ -3,14 +3,16 @@ angular.module("gxMainApp")
 		//this process is unqiue to d3.csv() method ; it reads the first row to determine column contents - PHIL
 		d3.csv("godatagrid.csv", function(data) {
 			var dateFormat = d3.time.format("%x %X");
-			var numberFormat = d3.format
+			var numberFormat = d3.format(".2f");
 			var s = $scope;
         s.colorbrewer = colorbrewer
+		var checked = false;
 
         data.forEach(function (d) {
             d.dd = dateFormat.parse(d.date);
             d.month = d3.time.month(d.dd); // pre-calculate month for better performance
-
+			d.year = d3.time.year(d.dd);
+			
 			//not sure what these do - PHIL
 			d.close = +d.close; // coerce to number
             d.open = +d.open;
@@ -99,12 +101,14 @@ angular.module("gxMainApp")
                 ++p.days;
                 p.total += (v.towersKWH + v.close) / 2;
                 p.avg = Math.round(p.total / p.days);
+				
                 return p;
             },
             function (p, v) {
                 --p.days;
                 p.total -= (v.towersKWH + v.centralKWH) / 2;
                 p.avg = p.days ? Math.round(p.total / p.days) : 0;
+				
                 return p;
             },
             function () {
@@ -141,14 +145,83 @@ angular.module("gxMainApp")
             return d.volume;
         });
 
-        // counts per weekday
+        // sum per weekday
         s.dayOfWeek = ndx.dimension(function (d) {
             var day = d.dd.getDay();
             var name=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
-            return day+"."+name[day];
+			
+			return day+"."+name[day];
          });
-        s.dayOfWeekGroup = s.dayOfWeek.group();
 
+        s.dayOfWeekGroup = s.dayOfWeek.group().reduceSum(function(d) {
+			return d.centralKWH/1000;
+		});
+
+		s.dailyDimension = ndx.dimension(function(d) {
+			//day will actually be Mon Jan 01 2012 00:00:00 - Don't worry! Thats ok! -Phil
+			var day = d3.time.day(d.dd);
+			
+			
+			return day;
+		});
+			
+		s.dailyGroup = s.dailyDimension.group().reduce(function (p, v) {
+                ++p.timestamps;
+                p.total += parseFloat(v.centralKWH);
+				v.dailyTotal = p.total;
+				
+                return p;
+            },
+            function (p, v) {
+                --p.timestamps;
+                p.total -= parseFloat(v.centralKWH);
+               v.dailyTotal = p.total;
+			   
+			   return p;
+            },
+            function () {
+                return {timestamps: 0, total: 0.0};
+            }
+        );
+		
+		//set up daily min/max for use in creating the histogram.
+		if(s.dailyMin === undefined)
+		{
+			var sorted = s.dailyGroup.order(function(p){
+				return p.total;
+			});
+			
+			s.dailyMax = sorted.top(1)[0].value.total;
+			
+			sorted = s.dailyGroup.order(function(p){
+				
+				//if total is 0, exclude it by returning -max
+				if(p.total == 0){return -s.dailyMax;}
+				else return -p.total;
+			});
+			
+			s.dailyMin = sorted.top(1)[0].value.total;
+			
+			sorted.dispose();
+		}
+		
+		s.dailyTotalDimension = ndx.dimension(function(d) {
+			return d.dailyTotal;
+		}).filter([5000,6000]);
+
+		/* Don't think this is the right way to go about it.
+		var dailydx = s.dailydx = crossfilter(function(){
+			var ray = {};
+			var map = s.dailyGroup().all();
+			
+			for( i = 0; i < map.size(); i++){
+				ray.date = map[i].key;
+				ray.timestamps = map[i].value.timestamps;
+				ray.total = map[i].value.timestamps;
+			}
+		});
+		*/
+		
         //### Define Chart Attributes
         //Define chart attributes using fluent methods. See the [dc API Reference](https://github.com/dc-js/dc.js/blob/master/web/docs/api-1.7.0.md) for more information
         //
@@ -176,14 +249,19 @@ angular.module("gxMainApp")
                 return p.key;
             },
             title:function (p) {
-							console.log(numberFormat(p.value.absGain));
+				if(checked == false){
+					console.log(s.dailyTotalDimension.top(20));
+					checked = true;
+					}
+				
                 return [p.key,
-                       "Index Gain: " + numberFormat(p.value.absGain),
+                       "Index Gain: " + numberFormat(p),
                        "Index Gain in Percentage: " + numberFormat(p.value.percentageGain) + "%",
                        "Fluctuation / Index Ratio: " + numberFormat(p.value.fluctuationPercentage) + "%"]
                        .join("\n");
             }
         }
+		//filter printer is the graphical tool allowing selection of a range x values on the graph
         s.fluctuationChartOptions = {
             filterPrinter: function (filters) {
                 var filter = filters[0], s = "";
@@ -194,7 +272,7 @@ angular.module("gxMainApp")
         s.fluctuationChartPostSetupChart = function(c) {
             // Customize axis
             c.xAxis().tickFormat(
-                function (v) { return v + "%"; });
+                function (v) { return v + "kW"; });
             c.yAxis().ticks(5);
         }
         //#### Stacked Area Chart
@@ -220,12 +298,14 @@ angular.module("gxMainApp")
             // Add the base layer of the stack with group. The second parameter specifies a series name for use in the legend
             c.group(s.indexAvgByMonthGroup, "Monthly Index Average")
         }
+		
+		//Note - .xAxis returns the xAxis object so further chart config can't be chained to it -PHIL
         s.dayOfWeekPostSetupChart = function(c) {
-            c.label(function(d) {
+			c.label(function(d) {
                 return d.key.split('.')[1];
             })
             .title(function(d) {
-                return d.value;
+                return numberFormat(d.value)+" MW";
             })
             .xAxis().ticks(4);
         }
