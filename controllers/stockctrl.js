@@ -164,18 +164,81 @@ angular.module("gxMainApp")
 			
 			return day;
 		});
-			
+
+		var values = new Object();
+		var pastDayTotal = 0;
+		var pastDay = new Date();
+		var tryme = false;
+		
+		//function to look up s.dailyGroup[date] and return total? or the object?
+		//put a reference to this value (or function) on each value as it passes
+		//thru a group function.
+		var lookupDailyTotal = function(date){
+			Object.keys(s.dailyGroup).forEach(function(key){
+				console.log(Object.keys(s.dailyGroup));
+				Object.keys(obj2).forEach(function(key2){
+				
+				console.log(Object.keys(obj2));
+				});
+			});
+		}
 		s.dailyGroup = s.dailyDimension.group().reduce(function (p, v) {
+				console.timeStamp("starting to make values array");
                 ++p.timestamps;
                 p.total += parseFloat(v.centralKWH);
-				v.dailyTotal = p.total;
 				
+				/*
+				var daykey = d3.time.day(v.dd).getTime()+'';
+				
+				if(pastDay == new Date()){
+					pastDay = d3.time.day(v.dd).getTime();
+				}
+				
+				var timestampkey = v.dd.getTime()+'';
+				
+				if(!(daykey in values)){
+					values[daykey]=new Object();
+				}
+				
+				if(!(timestampkey in values[daykey])){
+					v.total = p.total;
+					values[daykey][timestampkey] = v;
+				}
+				
+				//we are on a new day???
+				if(pastDayTotal > p.total){
+					for(var timestamp in values[daykey]){
+						if(timestamp.hasOwnProperty('total')){
+							timestamp.total = pastDayTotal;
+						}
+					}
+
+					if(tryme==false){		
+						var obj = values[daykey];
+						
+						Object.keys(obj).forEach(function(key){
+							
+							var obj2 = values[daykey][key];
+							Object.keys(obj2).forEach(function(key2){
+							
+							//console.log(Object.keys(obj2));
+							});
+						});
+					
+					tryme=true;
+					}
+				}
+				
+				pastDayTotal = p.total;
+				*/
                 return p;
+				
+				console.timeStamp("done making values array");
             },
             function (p, v) {
                 --p.timestamps;
                 p.total -= parseFloat(v.centralKWH);
-               v.dailyTotal = p.total;
+			   s.values[v.dd] = null;
 			   
 			   return p;
             },
@@ -205,10 +268,12 @@ angular.module("gxMainApp")
 			sorted.dispose();
 		}
 		
+		/*
 		s.dailyTotalDimension = ndx.dimension(function(d) {
 			return d.dailyTotal;
 		}).filter([5000,6000]);
-
+*/
+		
 		/* Don't think this is the right way to go about it.
 		var dailydx = s.dailydx = crossfilter(function(){
 			var ray = {};
@@ -250,7 +315,7 @@ angular.module("gxMainApp")
             },
             title:function (p) {
 				if(checked == false){
-					console.log(s.dailyTotalDimension.top(20));
+					//console.log(s.dailyGroup.top(20));
 					checked = true;
 					}
 				
